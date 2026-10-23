@@ -1,6 +1,10 @@
 package com.tiendaropa.infrastructure.adapters.out.persistence;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
@@ -8,9 +12,15 @@ import java.math.BigDecimal;
  * ENTIDAD JPA (Persistencia con Hibernate en MySQL)
  * 
  * Clase técnica exclusiva de la infraestructura.
+ * Utiliza Lombok (@Getter, @Setter, @NoArgsConstructor, @AllArgsConstructor)
+ * para generar automáticamente los constructores, getters y setters en tiempo de compilación.
  */
 @Entity
 @Table(name = "prendas")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class PrendaJpaEntity {
 
     @Id
@@ -31,68 +41,4 @@ public class PrendaJpaEntity {
 
     @Column(name = "stock", nullable = false)
     private Integer stock;
-
-    public PrendaJpaEntity() {
-    }
-
-    public PrendaJpaEntity(String nombre, String categoria, String talla, BigDecimal precio, Integer stock) {
-        this(null, nombre, categoria, talla, precio, stock);
-    }
-
-    public PrendaJpaEntity(Long id, String nombre, String categoria, String talla, BigDecimal precio, Integer stock) {
-        this.id = id;
-        this.nombre = nombre;
-        this.categoria = categoria;
-        this.talla = talla;
-        this.precio = precio;
-        this.stock = stock;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public String getTalla() {
-        return talla;
-    }
-
-    public void setTalla(String talla) {
-        this.talla = talla;
-    }
-
-    public BigDecimal getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(BigDecimal precio) {
-        this.precio = precio;
-    }
-
-    public Integer getStock() {
-        return stock;
-    }
-
-    public void setStock(Integer stock) {
-        this.stock = stock;
-    }
 }
